@@ -4,7 +4,12 @@
   "workspaces": {
     "": {
       "name": "jev-find",
+      "dependencies": {
+        "@typesafe-ai/sdk": "^0.6.0",
+        "effect": "^4.0.0-rc.117",
+      },
       "devDependencies": {
+        "@better-typescript/better-typescript": "0.4.27",
         "@types/bun": "latest",
       },
       "peerDependencies": {
@@ -13,9 +18,21 @@
     },
   },
   "packages": {
+    "@better-typescript/better-typescript": ["@better-typescript/better-typescript@0.4.27", "", { "optionalDependencies": { "@better-typescript/better-typescript-darwin-amd64": "0.4.27", "@better-typescript/better-typescript-darwin-arm64": "0.4.27", "@better-typescript/better-typescript-linux-amd64": "0.4.27", "@better-typescript/better-typescript-linux-arm64": "0.4.27" }, "bin": { "better-typescript": "bin/better-typescript.js" } }, "sha512-jZgJiWMbQfbJcB3JREbI5H85EUfbH2tHNmEfaArKytRLjlsvuIO0oT99s46L8ThDmGQRxGWJH/pWJ6YC6mDwyw=="],
+
+    "@better-typescript/better-typescript-darwin-amd64": ["@better-typescript/better-typescript-darwin-amd64@0.4.27", "", { "os": "darwin", "cpu": "x64" }, "sha512-jsxFdTtCsavV0oZMyliQAUfEKkEjnkq1zitRgOEws21znAxtJzXPCEUNIrBdTO+kg8N9ximMydiIcpliUWfukg=="],
+
+    "@better-typescript/better-typescript-darwin-arm64": ["@better-typescript/better-typescript-darwin-arm64@0.4.27", "", { "os": "darwin", "cpu": "arm64" }, "sha512-WBa9INZWyDwC2xRfBAYXb48OTBO5eARLUmVRCKdZiUai0i7RMtKFXdqAbDNfxImGv4nJMN6kadMR2yx3tnAOIw=="],
+
+    "@better-typescript/better-typescript-linux-amd64": ["@better-typescript/better-typescript-linux-amd64@0.4.27", "", { "os": "linux", "cpu": "x64" }, "sha512-e29OHEgM7I/bxbtHvIJgiAUu75fTyCv7PDKJMUNjnDSV/2/5XyzHu5kEILF46EsMPZ8ESXH8lq1baokrDt2KDA=="],
+
+    "@better-typescript/better-typescript-linux-arm64": ["@better-typescript/better-typescript-linux-arm64@0.4.27", "", { "os": "linux", "cpu": "arm64" }, "sha512-L2OfsKOnrNHa5yG+hUljp6sjNPCTlis1oBTYLn9xQ+EfYVfXGODGK7ejKAYe3e8Jdl6M8/IOYPGyYfC/46JAMQ=="],
+
     "@types/bun": ["@types/bun@1.4.2", "", { "dependencies": { "bun-types": "1.4.2" } }, "sha512-GimotNn7+ZV0uVArItBbriZsR1oNf0+WTzPkdcFrzShI7k2norL0uzEaJT8T33dWr7O/c9ZDuAFQrctKCi72oQ=="],
 
     "@types/node": ["@types/node@26.6.2", "", { "dependencies": { "undici-types": "~8.9.0" } }, "sha512-X1P21scMv4zGKLYqjdGjaKa7COa0RKVYYZZN/NfvLQ1JegxFhdhpZG/Lyn8AXx6CDUavKAd11v6BvfpkDByK8g=="],
+
+    "@typesafe-ai/sdk": ["@typesafe-ai/sdk@0.6.0", "", {}, "sha512-IddX+Q0XM+VagOUZFeP7wZjaO4SHMdvnh2zEBdrZZnXedWI3BNK1lKhMx3ayrkFWvVLbVcUHJy6AVZlY+e6Jaw=="],
 
     "@typescript/typescript-aix-ppc64": ["@typescript/typescript-aix-ppc64@7.0.2", "", { "os": "aix", "cpu": "ppc64" }, "sha512-MTKKkWB7p/0E9xi1d1tHtZ5PiLkGEMIq88pK2CubZjOsLtYTLqhgIgi6zepFa+9GHZ6h05NMCkQxGKiPXMxXtQ=="],
 
@@ -58,6 +75,8 @@
     "@typescript/typescript-win32-x64": ["@typescript/typescript-win32-x64@7.0.2", "", { "os": "win32", "cpu": "x64" }, "sha512-0BQ3HkAHHlKLSp1qRvf3SUhGpGsDuhB/jgFw75guyqbxJqEaS0Cw/VFO8i2nHglJUzQCRtMMR/IBAKE3ETMC4g=="],
 
     "bun-types": ["bun-types@1.4.2", "", { "dependencies": { "@types/node": "*" } }, "sha512-bxV1FgK7yBIzjRe5zBozIM4Bem11ZJcCXSrjWRG3YWLt8yFDePu4cLjpebO8OvPeIE9trbyPF4fuj3Cia4Fj3w=="],
+
+    "effect": ["effect@4.0.0-rc.117", "", {}, "sha512-UUyi9QiOW4nySFIBM3KnYbNMd9EZliOdKfBcyLD0mPMPheO2fkuXS5y0opjWc9oqzlJxPQICEGm8gGw3kh9j/w=="],
 
     "typescript": ["typescript@7.0.2", "", { "optionalDependencies": { "@typescript/typescript-aix-ppc64": "7.0.2", "@typescript/typescript-darwin-arm64": "7.0.2", "@typescript/typescript-darwin-x64": "7.0.2", "@typescript/typescript-freebsd-arm64": "7.0.2", "@typescript/typescript-freebsd-x64": "7.0.2", "@typescript/typescript-linux-arm": "7.0.2", "@typescript/typescript-linux-arm64": "7.0.2", "@typescript/typescript-linux-loong64": "7.0.2", "@typescript/typescript-linux-mips64el": "7.0.2", "@typescript/typescript-linux-ppc64": "7.0.2", "@typescript/typescript-linux-riscv64": "7.0.2", "@typescript/typescript-linux-s390x": "7.0.2", "@typescript/typescript-linux-x64": "7.0.2", "@typescript/typescript-netbsd-arm64": "7.0.2", "@typescript/typescript-netbsd-x64": "7.0.2", "@typescript/typescript-openbsd-arm64": "7.0.2", "@typescript/typescript-openbsd-x64": "7.0.2", "@typescript/typescript-sunos-x64": "7.0.2", "@typescript/typescript-win32-arm64": "7.0.2", "@typescript/typescript-win32-x64": "7.0.2" }, "bin": { "tsc": "bin/tsc" } }, "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA=="],
 
