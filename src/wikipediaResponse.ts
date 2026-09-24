@@ -9,9 +9,7 @@ import {
   Tuple,
 } from "effect";
 
-import { SearchResult } from "./searchResult.ts";
-
-import { WikipediaSearchError } from "./wikipedia.ts";
+import { SearchError, SearchResult } from "./search.ts";
 
 import {
   WikipediaExtractResponseSchema,
@@ -129,7 +127,7 @@ const responseFailure = (cause: unknown) => {
   const causeText = String(cause);
   const detail = `response: ${causeText}`;
 
-  return WikipediaSearchError.make({ detail });
+  return SearchError.make({ detail });
 };
 
 const searchResultThunk =

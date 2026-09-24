@@ -19,10 +19,10 @@ import {
 } from "./wikipediaProtocol.ts";
 
 import {
-  WikipediaSearch,
-  WikipediaSearchError,
-  type WikipediaSearchService,
-} from "./wikipedia.ts";
+  Search,
+  SearchError,
+  type SearchService,
+} from "./search.ts";
 
 type WikipediaSearchHit = ReturnType<typeof searchMatches>[number];
 type WikipediaPages = Parameters<typeof searchResult>[0];
@@ -103,7 +103,7 @@ const wikipediaFailure = (stage: string) => (cause: unknown) => {
   const causeText = String(cause);
   const detail = `${stage}: ${causeText}`;
 
-  return WikipediaSearchError.make({ detail });
+  return SearchError.make({ detail });
 };
 
 const searchFailure = wikipediaFailure("search");
@@ -186,7 +186,7 @@ const makeWikipedia = Effect.gen(function* () {
     return yield* Effect.all(results);
   });
 
-  return { search } satisfies WikipediaSearchService;
+  return { search } satisfies SearchService;
 });
 
-export const WikipediaLive = Layer.effect(WikipediaSearch)(makeWikipedia);
+export const WikipediaLive = Layer.effect(Search)(makeWikipedia);
