@@ -6,7 +6,7 @@ import {
 } from "effect";
 
 import { lexicalScore, queryTerms } from "./lexicalSearch.ts";
-import { type SearchResult } from "./search.ts";
+import { type SearchResult } from "../search/search.ts";
 
 const PASSAGES_PER_SOURCE = 3;
 const MAX_RESEARCH_SOURCES = 8;

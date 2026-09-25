@@ -21,7 +21,7 @@ import {
   evaluateEvidence,
 } from "./evidenceModel.ts";
 
-import { type Passage } from "./research.ts";
+import { type Passage } from "../research/research.ts";
 
 const TYPESAFE_TIMEOUT = "30 seconds";
 
@@ -36,9 +36,6 @@ interface TypeSafeClientConfig
 const EvidenceResponseSchema = Schema.Struct({
   answers: EvidenceAnswersSchema,
 });
-
-interface EvidenceResponse
-  extends Schema.Schema.Type<typeof EvidenceResponseSchema> {}
 
 const requestFailure = (cause: unknown) =>
   EvidenceRequestError.make({ detail: String(cause) });

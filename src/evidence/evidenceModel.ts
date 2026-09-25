@@ -20,7 +20,7 @@ import {
   RankedPassage,
 } from "./evidence.ts";
 
-import { Passage } from "./research.ts";
+import { Passage } from "../research/research.ts";
 
 const MAX_EVIDENCE_PASSAGES = 24;
 

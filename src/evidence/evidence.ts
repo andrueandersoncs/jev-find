@@ -1,6 +1,6 @@
 import { Context, Effect, Schema } from "effect";
 
-import { type Passage } from "./research.ts";
+import { type Passage } from "../research/research.ts";
 
 export class RankedPassage extends Schema.Class<RankedPassage>(
   "RankedPassage",

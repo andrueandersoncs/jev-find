@@ -183,7 +183,7 @@ const makeWikipedia = Effect.gen(function* () {
     const pages = extractResponse.query?.pages ?? {};
     const results = Array.map(selectedMatches, resultForPages(pages));
 
-    return yield* Effect.all(results);
+    return results;
   });
 
   return { search } satisfies SearchService;

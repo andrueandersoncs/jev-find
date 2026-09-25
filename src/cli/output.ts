@@ -10,7 +10,7 @@ import {
 import {
   type RankedEvidence,
   type RankedPassage,
-} from "./evidence.ts";
+} from "../evidence/evidence.ts";
 
 const DISPLAYED_PASSAGES = 5;
 const DISCARD_RESULTS = { discard: true } as const;

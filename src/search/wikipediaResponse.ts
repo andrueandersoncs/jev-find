@@ -1,15 +1,13 @@
 import {
   Array,
-  Effect,
   Equivalence,
   Function,
   Option,
-  pipe,
   Schema,
   Tuple,
 } from "effect";
 
-import { SearchError, SearchResult } from "./search.ts";
+import { SearchResult } from "./search.ts";
 
 import {
   WikipediaExtractResponseSchema,
@@ -123,28 +121,10 @@ const pageContent = (page: Option.Option<WikipediaPage>, fallback: string) =>
     onSome: (value) => value.extract ?? fallback,
   });
 
-const responseFailure = (cause: unknown) => {
-  const causeText = String(cause);
-  const detail = `response: ${causeText}`;
-
-  return SearchError.make({ detail });
-};
-
-const searchResultThunk =
-  (
-    title: string,
-    url: string,
-    description: string,
-    passages: ReadonlyArray<string>,
-  ) =>
-  () =>
-    SearchResult.make({ title, url, description, passages });
-
-export const searchResult = Effect.fn("Wikipedia.searchResult")(function* (
+export const searchResult = (
   pages: WikipediaPages,
   match: WikipediaSearchHit,
-) {
-  // The HTTP adapter schema-decodes both inputs because it owns response-body consumption.
+) => {
   const pageId = String(match.pageid);
   const page = findPage(pages, pageId);
   const description = cleanSnippet(match.snippet ?? "");
@@ -153,8 +133,6 @@ export const searchResult = Effect.fn("Wikipedia.searchResult")(function* (
   const content = pageContent(page, description);
   const passages = wikipediaPassages(content);
   const title = cleanSnippet(match.title);
-  const makeResult = searchResultThunk(title, url, description, passages);
-  const options = { try: makeResult, catch: responseFailure };
 
-  return yield* Effect.try(options);
-});
+  return SearchResult.make({ title, url, description, passages });
+};

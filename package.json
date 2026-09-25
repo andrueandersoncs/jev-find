@@ -3,8 +3,11 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "lint:semantic": "bun --env-file=.env run better-typescript semantic --files '**/*.ts' --files package.json --files tsconfig.json"
+  },
   "devDependencies": {
-    "@better-typescript/better-typescript": "0.4.27",
+    "@better-typescript/better-typescript": "0.4.29",
     "@types/bun": "latest"
   },
   "peerDependencies": {

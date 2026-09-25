@@ -1,4 +1,4 @@
-import { Array, HashSet, Tuple } from "effect";
+import { Array, HashSet } from "effect";
 
 import { STOP_WORDS } from "./stopWords.ts";
 
@@ -17,22 +17,16 @@ export const queryTerms = (query: string) => {
   return Array.dedupe(usefulTerms);
 };
 
-const makeTermContext = (haystack: string) => (term: string) =>
-  Tuple.make(haystack, term);
-
-const countMatchingTerm = (
-  score: number,
-  [haystack, term]: readonly [string, string],
-) => (haystack.includes(term) ? score + 1 : score);
-
 export const lexicalScore = (
   text: string,
   terms: ReadonlyArray<string>,
 ) => {
   const haystack = text.toLowerCase();
-  const contexts = Array.map(terms, makeTermContext(haystack));
-  const matches = Array.reduce(contexts, 0, countMatchingTerm);
-  const termCount = Math.max(terms.length, 1);
+  const matches = Array.reduce(
+    terms,
+    0,
+    (count, term) => count + Number(haystack.includes(term)),
+  );
 
-  return matches / termCount;
+  return matches / Math.max(terms.length, 1);
 };
